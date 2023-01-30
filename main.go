@@ -115,11 +115,9 @@ func findSignIndex(inputString string) int {
 }
 
 func testOperand(operand string) (int, string) {
-	// проверим на длину если больше 4-х выходим
 	if len(operand) > 4 {
 		return 0, ""
 	}
-	// проверяем на целочисленное, если да и меньше 11 и больше 0 то возвращаем его
 	res, err := strconv.Atoi(operand)
 	// fmt.Println("Res: ", res, ", err: ", err)
 	if err == nil {
@@ -170,14 +168,10 @@ func main() {
 		return
 	}
 	signValue := expression[signIndex]
-	// fmt.Printf("Index: %v; value: %v", signIndex, signValue)
-	// fmt.Println()
 
 	//Разделяем по знаку на операнды
 	operand1 := strings.TrimSpace(expression[:signIndex])
 	operand2 := strings.TrimSpace(expression[signIndex+1:])
-	// fmt.Printf("Operand 1: (%v), operand 2: (%v)", operand1, operand2)
-	// fmt.Println()
 	operand1Value, operand1Type := testOperand(operand1) // сделать через структуры
 	if operand1Type == "" {
 		fmt.Println("Ошибка, неверно задан операнд 1, это должно быть арабское, либо римское число от 1 до 10 включительно.")
@@ -192,8 +186,6 @@ func main() {
 		fmt.Println("Ошибка, несоответствуют типы операндов")
 		return
 	}
-	// fmt.Println(operand1Value, operand1Type)
-	// fmt.Println(operand2Value, operand2Type)
 
 	// вычисление результата и вывод в консоль
 	result := calculation(operand1Value, operand2Value, signValue)
